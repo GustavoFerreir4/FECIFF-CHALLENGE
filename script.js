@@ -47,58 +47,40 @@ function render(){
 
 }
 
-function clearSelection(selection){
-    selection.classList.remove("selected");
-    if(selection.parentElement == "leftCol"){
-        selectedQ = null;
-    }else{
-        selectedA = null
-    }
+function clearSelection(){
+    document.querySelectorAll(".item").forEach( element => {
+        element.classList.remove("selected");
+    });    
 }
 
 document.addEventListener("click", e => {
-
-    if(!e.target.classList.contains("item"))
-        return console.log("N clicou em nenhum item.");
-
-    const item = e.target;
-
+    if(!e.target.classList.contains("item")) return;
     let connectionNumber = userAnswers.length;
+    let target = e.target;
 
-    if (leftCol.contains(item)) {
-        selectedQ = item;
-    } else {
-        selectedA = item;
+    if (target.parentElement.classList.contains("leftColumn")){
+        selectedQ = target;
+        console.log("Clicou em: " + target);
     }
 
-    if(selectedA != null && selectedQ != null){
-        answer(selectedQ, selectedA)
+    if(selectedQ != null){
+        clearSelection();
+        selectItem(target)
     }
-
-    if(item.classList.contains("selected")){
-        // clicked on a selected element
-        clearSelection(item)
-    }else{
-        item.classList.add("selected" + connectionNumber);
-    }
-
-
-
-
-
-
-
-
-
 
     
-
-
 })
+
+
+function selectItem(item){
+    item.classList.add("selected")
+}
 
 function answer(quest, ans){
     userAnswers.push( {q: quest, a: ans} );
-    console.log(combinations)
+    selectedA = null;
+    selectedQ = null;
+    console.log(userAnswers);
 }
 
 render()
