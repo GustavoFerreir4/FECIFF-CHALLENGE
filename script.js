@@ -128,7 +128,7 @@ function removeAnswer(){
   let foundConcept = playerAnswers.indexOf(playerAnswers.find(item => item.c == concept.innerText));
 
 
-  if(foundAnswer == foundConcept && isConnected(foundAnswer.c, foundAnswer.a)){
+  if(foundAnswer == foundConcept){
     playerAnswers.splice(foundAnswer)
     concept.classList.remove(getConnectionNumberClass(concept));
     answer.classList.remove(getConnectionNumberClass(answer));
@@ -141,6 +141,7 @@ function removeAnswer(){
 
 function getConnectionNumberClass(element){
   let classArray = element.classList;
+  if (!classArray) return alert("Elementos não possuem conexão.")
   let newClassArray = Array();
 
   classArray.forEach(className => {
