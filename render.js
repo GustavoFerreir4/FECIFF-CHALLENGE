@@ -1,5 +1,3 @@
-
-
 let combinations = [
     {c: "Enxurradas.", a: "Escoamento superficial da água com alta energia de transporte e poder destrutivo."},
     {c: "Alagamento.", a: "Água da chuva temporariamente acumulada que não consegue escoar devido a problemas da rede de esgoto."},
@@ -15,15 +13,14 @@ let combinations = [
 
 let playerAnswers = Array();
 
-let questionSlider = document.querySelector("#concepts-slider");
 let answerSlider = document.querySelector("#answers-slider");
 
+let conceptSlider = document.querySelector("#concepts-slider");
 
 
 function shuffle(array){
     return array.sort(() => Math.random() - 0.5);
 }
-
 
 function render(){
 
@@ -31,7 +28,7 @@ function render(){
         const qDiv = document.createElement("div");
         qDiv.className = "slide";
         qDiv.innerText = pair.c;
-        questionSlider.appendChild(qDiv);
+        conceptSlider.appendChild(qDiv);
     });
 
     shuffle(combinations).forEach(pair => {
@@ -40,7 +37,6 @@ function render(){
         aDiv.innerText = pair.a;
         answerSlider.appendChild(aDiv);
     });
-
 }
 
 function initSliders() {
@@ -66,95 +62,17 @@ function initSliders() {
 
 
       slides.forEach(Element => {
-        Element.classList.add("hide")
-        Element.classList.remove("selected")
+        Element.classList.add("hide");
+        Element.classList.remove("selected");
       })
 
-      slides[currentIndex].classList.remove("hide")
-      slides[currentIndex].classList.add("selected")
+      slides[currentIndex].classList.remove("hide");
+      slides[currentIndex].classList.add("selected");
 
-      
     };
-
   });
-  
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initSliders();
 });
-
-render();
-
-function submitAnswer(){
-  let connectionNumber = playerAnswers.length;
-  let concept = document.querySelectorAll(".selected")[0];
-  let answer = document.querySelectorAll(".selected")[1];
-  
-  if(  isConnected(concept.innerText, answer.innerText) ){
-    alert("Esses elementos já estão conectados...");
-  }else{
-    concept.classList.add("connection-" + connectionNumber);
-    answer.classList.add("connection-" + connectionNumber);
-    playerAnswers.push(
-      {c: concept.innerText, a: answer.innerText}
-    )
-  }
-
-}
-
-function isConnected(c, a){
-  let repeats = false;
-  playerAnswers.forEach(Element => {
-    if(Element.a == a || Element.c == c){
-      repeats = true;
-    }
-  })
-
-  if(repeats){
-    return true;
-  }else{
-    return false;
-  }
-}
-
-
-
-function removeAnswer(){
-
-  let connectionNumber = playerAnswers.length;
-  let concept = document.querySelectorAll(".selected")[0];
-  let answer = document.querySelectorAll(".selected")[1];
-
-  let foundAnswer = playerAnswers.indexOf(playerAnswers.find(item => item.a == answer.innerText));
-  let foundConcept = playerAnswers.indexOf(playerAnswers.find(item => item.c == concept.innerText));
-
-
-  if(foundAnswer == foundConcept){
-    playerAnswers.splice(foundAnswer)
-    concept.classList.remove(getConnectionNumberClass(concept));
-    answer.classList.remove(getConnectionNumberClass(answer));
-  }else{
-    alert("Os elementos não pertencem à mesma conexão")
-  }
-
-}
-
-
-function getConnectionNumberClass(element){
-  let classArray = element.classList;
-  if (!classArray) return alert("Elementos não possuem conexão.")
-  let newClassArray = Array();
-
-  classArray.forEach(className => {
-    newClassArray.push(className);  
-  })
-
-  console.log(newClassArray);
-
-  let indexOfConnectionNumber = newClassArray.indexOf(newClassArray.find(className => className.includes("connection-")));
-
-  let connectionNumberClass = classArray[indexOfConnectionNumber];
-
-  return connectionNumberClass;
-}
