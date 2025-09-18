@@ -1,14 +1,14 @@
 :root {
-  --c1: #e57373;   /* vermelho suave */
-  --c2: #64b5f6;   /* azul claro */
-  --c3: #81c784;   /* verde médio */
-  --c4: #ffb74d;   /* laranja */
-  --c5: #ba68c8;   /* roxo */
-  --c6: #4db6ac;   /* turquesa */
-  --c7: #f06292;   /* rosa */
-  --c8: #ffd54f;   /* amarelo */
-  --c9: #7986cb;   /* azul lavanda */
-  --c10: #a1887f;  /* marrom acinzentado */
+  --c1: #64b5f6;   
+  --c2: #81c784;   
+  --c3: #adadad;   
+  --c4: #ffb74d;   
+  --c5: #ba68c8;   
+  --c6: #4db6ac;   
+  --c7: #f06292;   
+  --c8: #ffd54f;   
+  --c9: #7986cb;   
+  --c10: #93533c;  
 }
 
 
@@ -26,15 +26,13 @@ body {
   padding: 20px;
 }
 
-/* Game container */
 .game-container {
   display: flex;
   gap: 20px;
   justify-content: center;
-  flex-wrap: wrap; /* stack on mobile */
+  flex-wrap: wrap;
 }
 
-/* Slider columns */
 .slider-column {
   flex: 1 1 300px;
   max-width: 400px;
@@ -53,20 +51,18 @@ body {
   font-size: 1.3rem;
 }
 
-/* Slider wrapper */
 .slider {
   display: flex;
-  flex-direction: row; /* show one slide at a time */
+  flex-direction: row;
   overflow: hidden;
   width: 100%;
   height: 180px;
-  position: relative;              /* gap between slides */
+  position: relative;              
   transition: transform 0.4s ease-in-out;
 }
 
-/* Each slide */
 .slide {
-  flex: 0 0 100%;             /* each slide takes full container width */
+  flex: 0 0 100%;             
   height: 100%;
   background: #e6f0ff;
   border-radius: 8px;
@@ -75,12 +71,11 @@ body {
   align-items: center;
   font-size: 1.2rem;
   font-weight: bold;
-  border: 2px solid #4a90e2; /* optional visual border */
+  border: 2px solid #4a90e2; 
   user-select: none;
   padding: 5px;
 }
 
-/* Slider buttons */
 .slider-controls {
   margin-top: 12px;
   display: flex;
@@ -103,7 +98,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Connect button */
 button.connect-btn, button.disconnect-btn {
   margin-top: 20px;
   color: #fff;
@@ -145,7 +139,6 @@ button.connect-btn:active {
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .game-container {
     flex-direction: column;

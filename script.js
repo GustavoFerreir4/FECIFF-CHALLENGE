@@ -75,7 +75,9 @@ function initSliders() {
 
       
     };
+
   });
+  
 }
 
 document.addEventListener("DOMContentLoaded", () => {
