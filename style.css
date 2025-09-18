@@ -162,6 +162,42 @@ section.connection-buttons{
 }
 
 
+button#finish-btn {
+  background-color: #28a745;   /* verde para indicar ação final/positiva */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+button#finish-btn:hover {
+  background-color: #218838;   /* verde mais escuro no hover */
+  transform: translateY(-2px);
+}
+
+button#finish-btn:active {
+  background-color: #1e7e34;   /* verde ainda mais escuro ao clicar */
+  transform: translateY(0);
+}
+
+#timer {
+  font-size: 32px;          /* aumenta bastante o tamanho */
+  font-weight: bold;
+  color: #333;              /* cor escura para contraste */
+  background-color: #f0f0f0; /* leve fundo para destacar */
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-align: center;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
 .connection-0 { border-color: var(--c1); background: var(--c1); }
 .connection-1 { border-color: var(--c2); background: var(--c2); }
 .connection-2 { border-color: var(--c3); background: var(--c3); }

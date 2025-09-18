@@ -11,8 +11,6 @@ let combinations = [
     {c: "Aquecimento Global ", a: "Aumento da temperatura média global da Terra, agravado pela ação humana."}
 ];
 
-let playerAnswers = Array();
-
 let answerSlider = document.querySelector("#answers-slider");
 
 let conceptSlider = document.querySelector("#concepts-slider");
@@ -74,5 +72,7 @@ function initSliders() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  render();
   initSliders();
+  startTimer(5 * 60);
 });
