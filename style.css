@@ -101,9 +101,9 @@ body {
 button.connect-btn, button.disconnect-btn {
   margin-top: 20px;
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  padding: 12px 24px;
+  padding: 15px 30px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
