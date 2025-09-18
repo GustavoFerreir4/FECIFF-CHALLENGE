@@ -1,92 +1,47 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histological Disasters Match Game</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
 <body>
-<div class="quiz-container">
-<h1>Match the Pairs</h1>
-<div class="columns">
-<div class="column" id="left-col"></div>
-<div class="column" id="right-col"></div>
-</div>
-</div>
+  
+  <main class="game-container">
+    <!-- Concepts slider -->
+    <section class="slider-column">
+      <h2>Conceitos</h2>
+      <div class="slider" id="concepts-slider">
+        <!-- Add more as needed -->
+      </div>
+      <div class="slider-controls">
+        <button class="prev" data-target="concepts-slider">◀</button>
+        <button class="next" data-target="concepts-slider">▶</button>
+      </div>
+    </section>
 
+    <!-- Answers slider -->
+    <section class="slider-column">
+      <h2>Respostas</h2>
+      <div class="slider" id="answers-slider">
+        <!-- Add more as needed -->
+      </div>
+      <div class="slider-controls">
+        <button class="prev" data-target="answers-slider">◀</button>
+        <button class="next" data-target="answers-slider">▶</button>
+      </div>
+    </section>
 
-<script>
-const pairs = [
-{ q: "Dog", a: "Cachorro" },
-{ q: "Cat", a: "Gato" },
-{ q: "Bird", a: "Pássaro" },
-{ q: "Fish", a: "Peixe" }
-];
+    <section class="connection-buttons">
+      <button class="disconnect-btn" onclick="removeAnswer()">Desconectar</button>
+      <button class="connect-btn" onclick="submitAnswer()">Conectar</button>
+    </section >
+    
+  </main>
 
+      <script src="script.js"></script>
 
-const leftCol = document.getElementById("left-col");
-const rightCol = document.getElementById("right-col");
-
-
-let selectedQ = null;
-let selectedA = null;
-
-
-// Shuffle function
-function shuffle(array) {
-return array.sort(() => Math.random() - 0.5);
-}
-
-
-function render() {
-shuffle(pairs).forEach((pair, idx) => {
-const qDiv = document.createElement("div");
-qDiv.className = "item";
-qDiv.innerText = pair.q;
-qDiv.dataset.match = pair.a;
-leftCol.appendChild(qDiv);
-});
-
-
-shuffle([...pairs]).forEach((pair, idx) => {
-const aDiv = document.createElement("div");
-aDiv.className = "item";
-aDiv.innerText = pair.a;
-aDiv.dataset.match = pair.q;
-rightCol.appendChild(aDiv);
-});
-}
-
-
-function clearSelection() {
-document.querySelectorAll(".item").forEach(el => el.classList.remove("selected"));
-selectedQ = null;
-selectedA = null;
-}
-
-
-document.addEventListener("click", e => {
-    if (!e.target.classList.contains("item")) return;
-
-
-    const item = e.target;
-
-
-    if (leftCol.contains(item)) {
-        selectedQ = item;
-    } else {
-        selectedA = item;
-    }
-
-
-    item.classList.add("selected");
-
-
-    if (selectedQ && selectedA) {
-        if (selectedQ.dataset.match === selectedA.innerText) {
-        selectedQ.classList.add("correct");
-        selectedA.classList.add("correct");
-    }
-    // clearSelection();
-}
-});
-
-
-render();
-</script>
 </body>
 </html>
