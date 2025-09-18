@@ -84,8 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 render();
 
-
-
 function submitAnswer(){
   let connectionNumber = playerAnswers.length;
   let concept = document.querySelectorAll(".selected")[0];
@@ -121,8 +119,39 @@ function isConnected(c, a){
 
 
 function removeAnswer(){
-  let concept = document.querySelectorAll(".selected")[0];
-  let answer = document.querySelectorAll(".selected")[1]; 
 
-  
+  let connectionNumber = playerAnswers.length;
+  let concept = document.querySelectorAll(".selected")[0];
+  let answer = document.querySelectorAll(".selected")[1];
+
+  let foundAnswer = playerAnswers.indexOf(playerAnswers.find(item => item.a == answer.innerText));
+  let foundConcept = playerAnswers.indexOf(playerAnswers.find(item => item.c == concept.innerText));
+
+
+  if(foundAnswer == foundConcept && isConnected(foundAnswer.c, foundAnswer.a)){
+    playerAnswers.splice(foundAnswer)
+    concept.classList.remove(getConnectionNumberClass(concept));
+    answer.classList.remove(getConnectionNumberClass(answer));
+  }else{
+    alert("Os elementos não pertencem à mesma conexão")
+  }
+
+}
+
+
+function getConnectionNumberClass(element){
+  let classArray = element.classList;
+  let newClassArray = Array();
+
+  classArray.forEach(className => {
+    newClassArray.push(className);  
+  })
+
+  console.log(newClassArray);
+
+  let indexOfConnectionNumber = newClassArray.indexOf(newClassArray.find(className => className.includes("connection-")));
+
+  let connectionNumberClass = classArray[indexOfConnectionNumber];
+
+  return connectionNumberClass;
 }
