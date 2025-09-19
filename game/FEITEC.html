@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio mudanças climáticas</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  
+  <main class="game-container">
+    <div id="timer">00:00</div>
+    <!-- Concepts slider -->
+    <section class="slider-column">
+      <h2>Conceitos</h2>
+      <div class="slider" id="concepts-slider">
+        <!-- Add more as needed -->
+      </div>
+      <div class="slider-controls">
+        <button class="prev" data-target="concepts-slider">◀</button>
+        <button class="next" data-target="concepts-slider">▶</button>
+      </div>
+    </section>
+
+    <!-- Answers slider -->
+    <section class="slider-column">
+      <h2>Respostas</h2>
+      <div class="slider" id="answers-slider">
+        <!-- Add more as needed -->
+      </div>
+      <div class="slider-controls">
+        <button class="prev" data-target="answers-slider">◀</button>
+        <button class="next" data-target="answers-slider">▶</button>
+      </div>
+    </section>
+
+    <section class="connection-buttons">
+      <button class="disconnect-btn" onclick="removeAnswer()">Desconectar</button>
+      <button class="connect-btn" onclick="submitAnswer()">Conectar</button>
+    </section >
+    <button id="finish-btn" onclick="finish()">Concluir</button>
+    
+  </main>
+
+  <script src="render.js"></script>
+  <script src="game.js"></script>
+  <script src="timer.js"></script>
+
+</body>
+</html>

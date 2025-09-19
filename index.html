@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Desafio mudanças climáticas</title>
-  <link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEITEC | Mudanças Climáticas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-  <main class="game-container">
-    <div id="timer">00:00</div>
-    <!-- Concepts slider -->
-    <section class="slider-column">
-      <h2>Conceitos</h2>
-      <div class="slider" id="concepts-slider">
-        <!-- Add more as needed -->
-      </div>
-      <div class="slider-controls">
-        <button class="prev" data-target="concepts-slider">◀</button>
-        <button class="next" data-target="concepts-slider">▶</button>
-      </div>
+   
+    <main>
+        <div class="IF-image">
+            <img src="images/ifsp_smp.svg" alt="" width="200px" height="200px">
+        </div>
+        <div id="title">
+            <h1>Mudanças Climáticas</h1>
+            <h3>IFSP São Miguel Paulista</h3>
+        </div>
+
+        <div id="button">
+            <button onclick="openPopup()">INICIAR</button>
+        </div>
+        
+    </main>
+        <div class="FEITEC-image">
+            <img src="images/feitec.png" alt="" width="200px" height="50px">
+        </div>
+    <section>
+        <h2>Como jogar:</h2>
+
+        <p>Ao clicar em "INICIAR" você irá para uma outra tela onde terá duas seções com setas.</p>
+        <p>Você pode navegar entre os "CONCEITOS" e as "RESPOSTAS" e então conectá-las clicando no botão "CONECTAR".</p>
+        <p>Cada conexão é representada por um par de cores diferentes. </p>
+        <p>Ao clicar em "DESCONECTAR" você desfaz a conexão, permitindo-lhe refazer as conexões em caso de erro.</p>
+        <p>Você terá <strong>7 minutos</strong> para realizar todas as <strong>10 conexões</strong>!</p>
+        <p>Caso o tempo termine, terá de recomeçar o jogo.</p>
+        <p>Seus resultados serão exibidos ao terminar as conexões e clicar em "CONCLUIR"</p>
+        <p>Após obter seus resultados dirija-se a um dos integrates do projeto para retirada do seu prêmio.</p>
+        <a href="./game/FEITEC.html"><button>Entendi</button></a>
     </section>
 
-    <!-- Answers slider -->
-    <section class="slider-column">
-      <h2>Respostas</h2>
-      <div class="slider" id="answers-slider">
-        <!-- Add more as needed -->
-      </div>
-      <div class="slider-controls">
-        <button class="prev" data-target="answers-slider">◀</button>
-        <button class="next" data-target="answers-slider">▶</button>
-      </div>
-    </section>
+    <script>
+        function openPopup() {
+            document.querySelector('section').style.display = 'block';
+            document.querySelector('.popup-overlay').style.display = 'block';
+        }
 
-    <section class="connection-buttons">
-      <button class="disconnect-btn" onclick="removeAnswer()">Desconectar</button>
-      <button class="connect-btn" onclick="submitAnswer()">Conectar</button>
-    </section >
-    <button id="finish-btn" onclick="finish()">Concluir</button>
-    
-  </main>
-
-  <script src="render.js"></script>
-  <script src="game.js"></script>
-  <script src="timer.js"></script>
-
+        function closePopup() {
+            document.querySelector('section').style.display = 'none';
+            document.querySelector('.popup-overlay').style.display = 'none';
+        }
+    </script>
 </body>
 </html>

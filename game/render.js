@@ -74,5 +74,5 @@ function initSliders() {
 document.addEventListener("DOMContentLoaded", () => {
   render();
   initSliders();
-  startTimer(5 * 60);
+  startTimer(7 * 60);
 });

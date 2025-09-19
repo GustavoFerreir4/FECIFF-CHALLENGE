@@ -1,5 +1,6 @@
 let playerAnswers = Array();
 let availableConnections = Array.from({length: 10}, (_, i) => i + 1); 
+const TOTAL_COLORS = 10; // número de cores disponíveis no CSS
 function submitAnswer(){
 
     let concept = document.querySelectorAll(".selected")[0];
@@ -76,11 +77,14 @@ function getConnectionNumberClass(element){
 }
 
 function connect(){
-    let lastIndex = playerAnswers.length - 1;
+        let lastIndex = playerAnswers.length - 1;
     if (lastIndex < 0) return;
 
     let { c, a, n } = playerAnswers[lastIndex];
-    let className = "connection-" + n;
+
+    // calcula a cor ciclicamente
+    let colorIndex = ((n - 1) % TOTAL_COLORS) + 1;
+    let className = "connection-" + colorIndex;
 
     c.classList.add(className);
     a.classList.add(className);
