@@ -23,7 +23,7 @@ function stopTimer() {
 function updateTimer() {
     let min = Math.floor(timeLeft / 60);
     let sec = timeLeft % 60;
-    document.getElementById("timer").innerText =
+    document.getElementById("timer").innerHTML =
         `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
 }
 

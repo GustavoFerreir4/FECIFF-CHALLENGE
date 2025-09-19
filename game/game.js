@@ -1,5 +1,6 @@
 let playerAnswers = Array();
 let availableConnections = Array.from({length: 10}, (_, i) => i + 1); 
+let usedConnections = Array();
 const TOTAL_COLORS = 10; // número de cores disponíveis no CSS
 function submitAnswer(){
 
@@ -22,13 +23,17 @@ function submitAnswer(){
     }
 
     // pega o primeiro número disponível
-    let connectionNumber = availableConnections.shift();
+    usedConnections.push(availableConnections[0])
+    availableConnections.shift();
+    let lastIndex = usedConnections.length-1;
+    let connectionNumber = usedConnections[lastIndex];
+    console.clear();
     playerAnswers.push({ c: concept, a: answer, n: connectionNumber });
-
+    console.log(connectionNumber)
     connect();
 
-    console.clear();
-    console.log(playerAnswers);
+    // console.clear();
+    // console.log(playerAnswers);
 }
 
 
@@ -41,6 +46,14 @@ function removeAnswer(){
     let pair = playerAnswers.find(item => 
         item.c === concept || item.a === answer
     );
+
+
+    let connNumberToRemove = pair.n
+    availableConnections.push(usedConnections[usedConnections.indexOf(connNumberToRemove)]);
+
+
+
+
 
     if (!pair) {
         alert("Nenhuma conexão encontrada para esses elementos.");
@@ -56,7 +69,8 @@ function removeAnswer(){
     }
 
     console.clear();
-    console.log(playerAnswers);
+    console.log(connNumberToRemove)
+    console.log(availableConnections)
     
 }
 
@@ -77,7 +91,7 @@ function getConnectionNumberClass(element){
 }
 
 function connect(){
-        let lastIndex = playerAnswers.length - 1;
+    let lastIndex = playerAnswers.length - 1;
     if (lastIndex < 0) return;
 
     let { c, a, n } = playerAnswers[lastIndex];
@@ -101,9 +115,6 @@ function isConnected(c, a){
         item.c.innerText === c || item.a.innerText === a
     );
 }
-
-conceptSlider.childNodes[3].classList.add("selected")
-answerSlider.childNodes[3].classList.add("selected")
 
 
 function checkAnswers(){
@@ -136,9 +147,11 @@ function finish(){
         alert("Há Elementos sem conexão.")
     }else{
         let result = checkAnswers();
-        alert(`Acertos: ${result.correct}, Erros: ${result.wrong}`);
+        // alert(`Acertos: ${result.correct}, Erros: ${result.wrong}`);
         if(result.finished){
             alert("Jogo finalizado!");
         }
+        window.location.href = "../feedback"
     }
 }
+

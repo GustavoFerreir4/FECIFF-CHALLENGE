@@ -16,6 +16,8 @@ let answerSlider = document.querySelector("#answers-slider");
 let conceptSlider = document.querySelector("#concepts-slider");
 
 
+
+
 function shuffle(array){
     return array.sort(() => Math.random() - 0.5);
 }
@@ -75,4 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
   render();
   initSliders();
   startTimer(7 * 60);
+  conceptSlider.childNodes[3].classList.add("selected")
+  answerSlider.childNodes[3].classList.add("selected")
 });
+
+// document.querySelectorAll(".slide")[3].classList.add("selected");
