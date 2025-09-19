@@ -32,6 +32,7 @@ body {
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
+  max-width: 500px;
 }
 
 .slider-column {
