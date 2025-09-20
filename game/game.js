@@ -29,11 +29,8 @@ function submitAnswer(){
     let connectionNumber = usedConnections[lastIndex];
     console.clear();
     playerAnswers.push({ c: concept, a: answer, n: connectionNumber });
-    console.log(connectionNumber)
     connect();
 
-    // console.clear();
-    // console.log(playerAnswers);
 }
 
 
@@ -66,12 +63,7 @@ function removeAnswer(){
         disconnect(concept, answer);
     } else {
         alert("Os elementos não pertencem à mesma conexão.");
-    }
-
-    console.clear();
-    console.log(connNumberToRemove)
-    console.log(availableConnections)
-    
+    }    
 }
 
 
@@ -133,22 +125,19 @@ function checkAnswers(){
         }
     });
 
-    return {
-        total: playerAnswers.length,
-        correct: correct,
-        wrong: playerAnswers.length - correct,
-        finished: playerAnswers.length === combinations.length
-    };
+    let incorrect = playerAnswers.length - correct;
+    localStorage.setItem("correct", correct);
+    localStorage.setItem("incorrect", incorrect);
 }
+
 
 function finish(){
 
     if(playerAnswers.length < 10){
         alert("Há Elementos sem conexão.")
     }else{
-        let result = checkAnswers();
-        // alert(`Acertos: ${result.correct}, Erros: ${result.wrong}`);
-        if(result.finished){
+        checkAnswers();
+        if(playerAnswers.length === combinations.length){
             alert("Jogo finalizado!");
         }
         window.location.href = "../feedback"
